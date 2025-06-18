@@ -131,6 +131,7 @@ form button:hover {
 
 .task {
     width: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -144,6 +145,11 @@ form button:hover {
 .no-task {
     color: #ccd;
     font-style: italic;
+}
+
+h3 {
+    max-width: 30rem;
+    overflow-x: auto;
 }
 
 .action-buttons {
