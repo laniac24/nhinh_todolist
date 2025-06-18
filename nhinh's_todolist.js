@@ -27,7 +27,7 @@ function handleTaskActions(e) {
     e.preventDefault()
 
     const taskItem = e.target.closest('.task');
-    const taskIndex = taskItem.dataset.index;
+    const taskIndex = +taskItem.dataset.index;
     const task = tasks[taskIndex];
 
     if (e.target.closest('.edit')) {
