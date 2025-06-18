@@ -148,7 +148,7 @@ form button:hover {
 }
 
 .task-title {
-    width: 30rem;
+    max-width: 30rem;
     overflow-x: auto;
 }
 
