@@ -1,10 +1,19 @@
-const tasks = [];
+const tasks = JSON.parse(localStorage.getItem('tasks')) ?? [];
 
 const taskInput = document.querySelector('input');
 const taskForm = document.querySelector('form');
 const submitButton = document.querySelector('#submit');
 const taskList = document.querySelector('#task-list');
-console.log(taskList);
+
+function escapeHTML(html) {
+    const div = document.createElement('div');
+    div.innerText = html
+    return div.innerHTML;
+}
+
+function saveTask() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
 
 function isDuplicateTask(newTitle, excludedIndex = -1) {
     const isDuplicate = tasks.some((task, index) => 
@@ -28,14 +37,17 @@ function handleTaskActions(e) {
         if (newValue !== null && newValue.trim()) {
             task.title = newValue;
             renderTask();
+            saveTask();
         }
     } else if (e.target.closest('.done')) {
         task.completed = !task.completed;
         renderTask();
+        saveTask();
     } else if (e.target.closest('.delete')) {
         if (confirm('bbi are u sure want to delete this task? >:c')) {
             tasks.splice(taskIndex, 1);
             renderTask();
+            saveTask();
         }
     }
 }
@@ -58,6 +70,7 @@ function addTask(e) {
     tasks.push(newTask);
 
     renderTask();
+    saveTask();
     taskInput.value = '';
 }
 
@@ -69,7 +82,7 @@ function renderTask() {
 
     const html = tasks.map((task, index) => `
         <li class="task ${task.completed ? 'completed' : ''}" data-index="${index}">
-            <h3 class="task-title">${task.title}</h3>
+            <h3 class="task-title">${escapeHTML(task.title)}</h3>
             <div class="action-buttons">
                 <button class="btn done">${task.completed ? 'mark as undone' : 'mark as done'}</button>
                 <button class="btn edit">
