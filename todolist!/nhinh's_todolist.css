@@ -1,0 +1,194 @@
+/* Remove hover link on GIF */
+.tenor-gif-embed, 
+.tenor-gif-embed * {
+    pointer-events: none !important;
+    cursor: default !important;
+    border-radius: 40%;
+    width: 54px;
+    height: 54px;
+}
+
+/* Remove any hover effects */
+.tenor-gif-embed:hover {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* --------------------------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 1.6rem;
+    padding: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fefefe;
+}
+
+#todolist-cover {
+    width: 1000px;
+    height: 1000px;
+    background-image: url(pixelated_version\ \(1\).png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
+}
+
+#todolist {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15rem;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+#todolist-title {
+    height: 5rem;
+    width: 70rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+h1 {
+    font-size: 4.2rem;
+    color: #fefefe;
+    font-weight: 400;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    margin: 2.5rem 0 5.5rem 0;
+}
+
+form input {
+    width: 400px;
+    height: 36px;
+    background-color: #FAF8DE;
+    border-radius: 20px;
+    padding: 0 2rem;
+    font-family: 'Pixelify Sans', sans-serif;
+    border: none;
+}
+
+form input:focus {
+    outline: 2px solid #71b032;
+}
+
+form button {
+    width: 64px;
+    height: 36px;
+    border-radius: 20px;
+    background-color: #F1C2D7;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #333;
+    transition: 300ms ease-in-out;
+}
+
+form button:hover {
+    color: #fff;
+    background-color: #bdabda;
+    font-size: 1.5rem;
+}
+
+#task-list {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+}
+
+.task {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem 1rem 4.5rem;
+    background-color: rgb(255, 255, 255, .9);
+    border-radius: 5px;
+    font-size: 1.8rem;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.done {
+    font-family: 'Pixelify Sans', serif;
+    font-size: 1.4rem;
+    color: #666;
+    transition: 300ms ease-in-out;
+}
+
+.done:hover {
+    font-size: 1.5rem;
+}
+
+.edit img {
+    width: 30px;
+    height: 30px;
+    transition: 300ms ease-in-out;
+}
+
+.edit img:hover {
+    scale: 1.15;
+}
+
+.delete img {
+    width: 30px;
+    height: 30px;
+    transition: 300ms ease-in-out;
+}
+
+.delete img:hover {
+    scale: 1.15;
+}
+
+.completed {
+    background-color: rgb(254, 254, 254, .6);
+    opacity: 70%;
+}
+
+.completed h3 {
+    text-decoration: line-through;
+    opacity: 70%;
+}
+
+.completed .done {
+    color: #fff;
+}
