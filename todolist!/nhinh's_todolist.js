@@ -13,7 +13,22 @@ function handleTaskActions(e) {
     const taskIndex = taskItem.dataset.index;
     const task = tasks[taskIndex];
 
-    
+    if (e.target.closest('.edit')) {
+        const newValue = prompt("Let's enter new task name <3", task.title);
+        
+        if (newValue !== null && newValue.trim()) {
+            task.title = newValue;
+            renderTask();
+        }
+    } else if (e.target.closest('.done')) {
+        task.completed = !task.completed;
+        renderTask();
+    } else if (e.target.closest('.delete')) {
+        if (confirm('bbi are u sure want to delete this task? >:c')) {
+            tasks.splice(taskIndex, 1);
+            renderTask();
+        }
+    }
 }
 
 function addTask(e) {
@@ -53,3 +68,4 @@ function renderTask() {
 renderTask();
 
 taskForm.addEventListener('submit', addTask);
+taskList.addEventListener('click', handleTaskActions);
