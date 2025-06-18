@@ -147,8 +147,8 @@ form button:hover {
     font-style: italic;
 }
 
-h3 {
-    max-width: 10rem;
+.task-title {
+    width: 15rem;
     overflow-x: auto;
 }
 
