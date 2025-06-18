@@ -141,6 +141,11 @@ form button:hover {
     font-size: 1.8rem;
 }
 
+.no-task {
+    color: #ccd;
+    font-style: italic;
+}
+
 .action-buttons {
     display: flex;
     justify-content: center;
@@ -182,6 +187,7 @@ form button:hover {
 .completed {
     background-color: rgb(254, 254, 254, .6);
     opacity: 70%;
+    
 }
 
 .completed h3 {

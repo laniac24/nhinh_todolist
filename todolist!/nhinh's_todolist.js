@@ -6,6 +6,14 @@ const submitButton = document.querySelector('#submit');
 const taskList = document.querySelector('#task-list');
 console.log(taskList);
 
+function isDuplicateTask(newTitle, excludedIndex = -1) {
+    const isDuplicate = tasks.some((task, index) => 
+        task.title.toLowerCase() === newTitle.toLowerCase()
+        && excludedIndex !== index
+    );
+    return isDuplicate;
+}
+
 function handleTaskActions(e) {
     e.preventDefault()
 
@@ -15,7 +23,8 @@ function handleTaskActions(e) {
 
     if (e.target.closest('.edit')) {
         const newValue = prompt("Let's enter new task name <3", task.title);
-        
+        if (isDuplicateTask(newValue, taskIndex)) return alert('This task has been add before ~.~');
+
         if (newValue !== null && newValue.trim()) {
             task.title = newValue;
             renderTask();
@@ -35,18 +44,29 @@ function addTask(e) {
     e.preventDefault();
     const value = taskInput.value.trim();
     if (!value) return;
+    if (isDuplicateTask(value)) {
+        alert('This task has been add before ~.~');
+        taskInput.value = '';
+        return;
+    } 
+    
 
     const newTask = {
         title: value,
         completed: false
     }
-    tasks.unshift(newTask);
+    tasks.push(newTask);
 
     renderTask();
     taskInput.value = '';
 }
 
 function renderTask() {
+    if (tasks.length === 0) {
+        taskList.innerHTML = `<li class="no-task">no task available</li>`
+        return;
+    }
+
     const html = tasks.map((task, index) => `
         <li class="task ${task.completed ? 'completed' : ''}" data-index="${index}">
             <h3 class="task-title">${task.title}</h3>
